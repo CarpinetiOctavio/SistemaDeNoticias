@@ -1,0 +1,10 @@
+# ninja log v5
+11	49	1717685051506504173	CMakeFiles/SistemaDeNoticias.dir/Articulo.cpp.o	d68690513146c09d
+11	49	1717685051506495215	CMakeFiles/SistemaDeNoticias.dir/Usuario.cpp.o	e1eb65d302a60efa
+31	62	1717685104984450616	SistemaDeNoticias	891884371a7b04cb
+7	470	1717685051927914310	CMakeFiles/SistemaDeNoticias.dir/Persona.cpp.o	a2bf7f2398ad1238
+6	31	1717685104953976606	CMakeFiles/SistemaDeNoticias.dir/main.cpp.o	610a6db6c6285929
+6	275	1717686632187317571	CMakeFiles/SistemaDeNoticias.dir/Usuario.cpp.o	e1eb65d302a60efa
+6	276	1717686632187339863	CMakeFiles/SistemaDeNoticias.dir/Autor.cpp.o	f9d2e8c4cada9e19
+5	277	1717686632189139230	CMakeFiles/SistemaDeNoticias.dir/Persona.cpp.o	a2bf7f2398ad1238
+277	307	1717686632220354543	SistemaDeNoticias	524e515889f5d3d8

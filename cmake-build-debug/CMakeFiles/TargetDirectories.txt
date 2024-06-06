@@ -1,0 +1,3 @@
+/Users/octavio/Desktop/UCC/Programacion/2/Proyecto News/SistemaDeNoticias/cmake-build-debug/CMakeFiles/SistemaDeNoticias.dir
+/Users/octavio/Desktop/UCC/Programacion/2/Proyecto News/SistemaDeNoticias/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/octavio/Desktop/UCC/Programacion/2/Proyecto News/SistemaDeNoticias/cmake-build-debug/CMakeFiles/rebuild_cache.dir
