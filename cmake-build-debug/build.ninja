@@ -84,6 +84,20 @@ build CMakeFiles/SistemaDeNoticias.dir/Autor.cpp.o: CXX_COMPILER__SistemaDeNotic
   OBJECT_DIR = CMakeFiles/SistemaDeNoticias.dir
   OBJECT_FILE_DIR = CMakeFiles/SistemaDeNoticias.dir
 
+build CMakeFiles/SistemaDeNoticias.dir/Publicacion.cpp.o: CXX_COMPILER__SistemaDeNoticias_unscanned_Debug /Users/octavio/Desktop/UCC/Programacion/2/Proyecto$ News/SistemaDeNoticias/Publicacion.cpp || cmake_object_order_depends_target_SistemaDeNoticias
+  DEP_FILE = CMakeFiles/SistemaDeNoticias.dir/Publicacion.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
+  INCLUDES = -I"/Users/octavio/Desktop/UCC/Programacion/2/Proyecto News/SistemaDeNoticias/."
+  OBJECT_DIR = CMakeFiles/SistemaDeNoticias.dir
+  OBJECT_FILE_DIR = CMakeFiles/SistemaDeNoticias.dir
+
+build CMakeFiles/SistemaDeNoticias.dir/Desarrollo.cpp.o: CXX_COMPILER__SistemaDeNoticias_unscanned_Debug /Users/octavio/Desktop/UCC/Programacion/2/Proyecto$ News/SistemaDeNoticias/Desarrollo.cpp || cmake_object_order_depends_target_SistemaDeNoticias
+  DEP_FILE = CMakeFiles/SistemaDeNoticias.dir/Desarrollo.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -fcolor-diagnostics
+  INCLUDES = -I"/Users/octavio/Desktop/UCC/Programacion/2/Proyecto News/SistemaDeNoticias/."
+  OBJECT_DIR = CMakeFiles/SistemaDeNoticias.dir
+  OBJECT_FILE_DIR = CMakeFiles/SistemaDeNoticias.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target SistemaDeNoticias
@@ -92,7 +106,7 @@ build CMakeFiles/SistemaDeNoticias.dir/Autor.cpp.o: CXX_COMPILER__SistemaDeNotic
 #############################################
 # Link the executable SistemaDeNoticias
 
-build SistemaDeNoticias: CXX_EXECUTABLE_LINKER__SistemaDeNoticias_Debug CMakeFiles/SistemaDeNoticias.dir/Persona.cpp.o CMakeFiles/SistemaDeNoticias.dir/Articulo.cpp.o CMakeFiles/SistemaDeNoticias.dir/Usuario.cpp.o CMakeFiles/SistemaDeNoticias.dir/main.cpp.o CMakeFiles/SistemaDeNoticias.dir/Autor.cpp.o
+build SistemaDeNoticias: CXX_EXECUTABLE_LINKER__SistemaDeNoticias_Debug CMakeFiles/SistemaDeNoticias.dir/Persona.cpp.o CMakeFiles/SistemaDeNoticias.dir/Articulo.cpp.o CMakeFiles/SistemaDeNoticias.dir/Usuario.cpp.o CMakeFiles/SistemaDeNoticias.dir/main.cpp.o CMakeFiles/SistemaDeNoticias.dir/Autor.cpp.o CMakeFiles/SistemaDeNoticias.dir/Publicacion.cpp.o CMakeFiles/SistemaDeNoticias.dir/Desarrollo.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk
   OBJECT_DIR = CMakeFiles/SistemaDeNoticias.dir
   POST_BUILD = :

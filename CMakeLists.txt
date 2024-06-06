@@ -14,4 +14,8 @@ add_executable(SistemaDeNoticias
         Usuario.h
         Usuario.cpp
         main.cpp
-        Autor.cpp)
+        Autor.cpp
+        Publicacion.h
+        Publicacion.cpp
+        Desarrollo.h
+        Desarrollo.cpp)
