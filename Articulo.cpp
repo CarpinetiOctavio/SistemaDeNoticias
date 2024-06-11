@@ -54,4 +54,15 @@ int Articulo::getAnio()
     return anio;
 }
 
-Articulo::Articulo(std::string _titulo, std::string _detalle, int _dia, int _mes, int _anio) {};
+void Articulo::setAutor(Autor _autor)
+{
+    autor = _autor;
+}
+
+Autor Articulo::getAutor()
+{
+    return autor;
+}
+
+Articulo::Articulo(std::string _titulo, std::string _detalle, int _dia, int _mes, int _anio, Autor _autor)
+: titulo(_titulo), detalle(_detalle), dia(_dia), mes(_mes), anio(_anio), autor(_autor){};

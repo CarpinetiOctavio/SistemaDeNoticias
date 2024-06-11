@@ -18,4 +18,6 @@ add_executable(SistemaDeNoticias
         Publicacion.h
         Publicacion.cpp
         Desarrollo.h
-        Desarrollo.cpp)
+        Desarrollo.cpp
+        Comentario.h
+        Comentario.cpp)
