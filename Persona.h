@@ -1,6 +1,3 @@
-//
-// Created by Octavio Carpineti on 06/06/2024.
-//
 
 //
 // Created by Octavio Carpineti on 01/06/2024.
@@ -22,14 +19,15 @@ public:
     void setNombre (std::string _nombre);
 
     // Getters respectivos
-    std::string getNombre ();
-    int getDni();
+    std::string getNombre () const;
+    int getDni() const;
 
     // Constructor parametrizado
     Persona(int _dni, std::string _nombre);
 
     Persona();
 };
+
 
 
 #endif //CODIGO_PERSONA_H

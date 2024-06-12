@@ -14,18 +14,39 @@ class Desarrollo {
 private:
     std::vector<Usuario> usuarios;
     std::vector<Autor> autores;
-    std::vector<Articulo> articulos;
+    Publicacion publicacion;
 
 public:
     // Menues
     void menuInicial();
     void menuLectorInicial();
     void menuAutorInicial();
+    void menuRegistrosConsultas();
+
+    void leerArticulos() const;
+    void registroDeUsuarios();
+    void registroDeAutores();
+    void consultarArticulosPorAutor();
+    void consultarComentariosPorUsuario();
+    void listarNoticiasAnio(int anio);
 
     // Funciones de ingreso
     void registrarUsuario();
     void registrarAutor();
     void registrarArticulo();
+
+    // Función para que un usuario comente un artículo
+    void comentarArticulo();
+
+    // Función para mostrar la lista de usuarios disponibles
+    void mostrarUsuarios() const;
+
+    void listarNoticiasUltimoMes(int mes);
+
+    // Función para mostrar la lista de artículos disponibles
+    void mostrarArticulos() const;
+
+    void pedirFecha(int &mes, int &anio);
 };
 
-#endif //SISTEMADENOTICIAS_DESARROLLO_H
+#endif // SISTEMADENOTICIAS_DESARROLLO_H

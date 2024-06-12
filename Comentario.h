@@ -1,20 +1,27 @@
-//
-// Created by Octavio Carpineti on 11/06/2024.
-//
+#ifndef COMENTARIO_H
+#define COMENTARIO_H
 
-#ifndef SISTEMADENOTICIAS_COMENTARIO_H
-#define SISTEMADENOTICIAS_COMENTARIO_H
-#include <iostream>
-#include <vector>
-#include "Persona.h"
-#include "Autor.h"
+#include <string>
 #include "Usuario.h"
-#include "Articulo.h"
-#include "Publicacion.h"
 
 class Comentario {
+private:
+    int numero;
+    std::string texto;
+    Usuario usuario;
+
+public:
+
+    void setUsuario (Usuario _usuario);
+    void setNumero (int _numero);
+    void setTexto (std::string _texto);
+
+    int getNumero();
+    std::string getTexto() const;
+    Usuario getUsuario () const;
+
+    Comentario(int _numero, std::string _texto, Usuario _usuario);
 
 };
 
-
-#endif //SISTEMADENOTICIAS_COMENTARIO_H
+#endif // COMENTARIO_H

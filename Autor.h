@@ -14,7 +14,7 @@ private:
 public:
     void setMedio (std::string _medio);
 
-    std::string getMedio ();
+    std::string getMedio () const;
 
     Autor(int _dni, std::string _nombre, std::string _medio);
 };

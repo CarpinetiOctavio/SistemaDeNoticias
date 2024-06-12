@@ -9,7 +9,7 @@ void Persona::setDni(int _dni)
     dni = _dni;
 }
 
-int Persona::getDni()
+int Persona::getDni() const
 {
     return dni;
 }
@@ -19,7 +19,7 @@ void Persona::setNombre(std::string _nombre)
     nombre = _nombre;
 }
 
-std::string Persona::getNombre()
+std::string Persona::getNombre() const
 {
     return nombre;
 }

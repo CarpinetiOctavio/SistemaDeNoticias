@@ -9,7 +9,7 @@ void Autor::setMedio(std::string _medio)
     medio = _medio;
 }
 
-std::string Autor::getMedio()
+std::string Autor::getMedio() const
 {
     return medio;
 }
