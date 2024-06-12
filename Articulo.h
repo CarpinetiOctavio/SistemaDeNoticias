@@ -14,8 +14,6 @@ private:
     int dia, mes, anio;
     std::vector<Comentario> comentarios;
 
-
-
 public:
     // Constructor del artículo
     Articulo(std::string _titulo, std::string _detalle, int _dia, int _mes, int _anio, Autor _autor);

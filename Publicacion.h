@@ -11,13 +11,11 @@ private:
     std::vector<Articulo> articulos;
 
 public:
-    // Método para agregar un artículo
-    void agregarArticulo(const Articulo& articulo) {
-        articulos.push_back(articulo);
-    }
+    void agregarArticulo(const Articulo& articulo);
 
     // Método para obtener todos los artículos
-    const std::vector<Articulo>& getArticulos() const {
+    const std::vector<Articulo>& getArticulos() const
+    {
         return articulos;
     }
 
