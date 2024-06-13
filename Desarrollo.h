@@ -17,6 +17,9 @@ private:
     Publicacion publicacion;
 
 public:
+
+    //Funcion de registro de datos en archivos
+    void registrarDatos(const std::string& nombreArchivo, const std::string& datos);
     // Menues
     void menuInicial();
     void menuLectorInicial();
@@ -47,6 +50,9 @@ public:
     void mostrarArticulos() const;
 
     void pedirFecha(int &mes, int &anio);
+
+
+   
 };
 
 #endif // SISTEMADENOTICIAS_DESARROLLO_H

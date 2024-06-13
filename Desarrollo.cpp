@@ -1,4 +1,44 @@
 #include "Desarrollo.h"
+#include <fstream>
+
+// Desarrollo funcion para abrir o crear archivos .txt donde se registraran los datos
+
+void Desarrollo::registrarDatos(const std::string& nombreArchivo, const std::string& datos) {
+    std::ofstream archivoSalida(nombreArchivo, std::ios::app);
+    if (!archivoSalida) {
+        std::cerr << "Error al abrir el archivo: " << nombreArchivo << std::endl;
+        return;
+    }
+    archivoSalida << datos << std::endl;
+    archivoSalida.close();
+}
+
+// Funcion que lee el indice de los archivos para anotarlos con el correspondiente al archivado
+int leerUltimoIndice(const std::string& nombreArchivo, const std::string& tipoRegistro) { // tipoRegistro espera comparar por ejemplo: Autor con Autor, en donde encontrará los indices
+    std::ifstream archivoEntrada(nombreArchivo);
+    if (!archivoEntrada) {
+        // Si el archivo no existe, devolver 0
+        return 0;
+    }
+
+    std::string linea;
+    int ultimoIndice = 0;
+    while (std::getline(archivoEntrada, linea)) { //mientras haya texto en cada línea, esta se almacena en la variable 'linea'
+        // Suponiendo que el índice está en una línea que empieza con el tipo de registro
+        if (linea.find(tipoRegistro) == 0) {
+            size_t pos = linea.find(' '); //buscamos el primer espacio, .find() devuelve la posicion
+            if (pos != std::string::npos) { //Verifica que se encontró la linea, npos y pos no coinciden
+                int indice = std::stoi(linea.substr(pos + 1)); // Hace una subcadena desde el espacio consecutivo al tipoRegistro y lo pasa a entero
+                if (indice > ultimoIndice) {
+                    ultimoIndice = indice;
+                }
+            }
+        }
+    }
+
+    archivoEntrada.close();
+    return ultimoIndice;
+}
 
 /*
  * 1. DESARROLLO DE MENUES
@@ -165,6 +205,11 @@ void Desarrollo::registrarUsuario()
     std::cout << "Seleccione la cantidad de usuarios a ingresar al sistema: \n";
     std::cin >> cantUsuarios;
 
+    // Leer el último índice del archivo o usar el tamaño actual del vector
+    int usuarioInicial = leerUltimoIndice("registro_usuarios.txt", "Usuario");
+    if (usuarioInicial == 0) {
+        usuarioInicial = usuarios.size();
+    }
     for (int i = 0; i < cantUsuarios; i++)
     {
         int dni, edad;
@@ -179,7 +224,7 @@ void Desarrollo::registrarUsuario()
          * En aquellas entradas de texto, las cuales puedan contener espacios, se emplea 'getline'
          * De usar 'cin', genera errores si en la entrada de texto tiene espacios
          * Para corroborar que no hayan fallas en la entrada de texto, se usa 'cin.ignore'
-         * 'cin.ignore', para vaciar el buffer de entrada, a la hora de cargar el texto
+         *, para vaciar el buffer de entrada, a la hora de cargar el texto
          */
         std::cout << "Nombre: ";
         std::cin.ignore();
@@ -196,6 +241,14 @@ void Desarrollo::registrarUsuario()
 
         // El objeto usuario recién creado se agrega al vector usuarios.
         usuarios.push_back(usuario);
+
+        // Registro del usuario en un archivo de texto
+        // Formatear los datos del usuario a string
+        std::string datosUsuario = "Usuario " + std::to_string(usuarioInicial + i + 1) + ":\n" +
+                                   "DNI: " + std::to_string(dni) + "\n" +
+                                   "Nombre: " + nombre + "\n" +
+                                   "Edad: " + std::to_string(edad) + "\n";
+        registrarDatos("registro_usuarios.txt", datosUsuario);
     }
 }
 
@@ -260,6 +313,16 @@ void Desarrollo::comentarArticulo() {
     if (!publicacion.comentarArticulo(articuloSeleccionado.getTitulo(), comentario, usuarioSeleccionado)) {
         std::cout << "Error al agregar el comentario.\n";
     }
+
+    // Registro de comentario en archivo de texto
+    // Formateo los datos del comentario como una cadena
+    std::string datosComentario = "Usuario: " + usuarioSeleccionado.getNombre() +
+                                  "\nArtículo: " + articuloSeleccionado.getTitulo() +
+                                  "\nNúmero de comentario: " + std::to_string(numeroDeComentario) +
+                                  "\nTexto del comentario: " + textoComentario + "\n";
+
+    // Registro los datos en un archivo
+    registrarDatos("registro_comentarios.txt", datosComentario);
 }
 
 // Implementación de la función para leer artículos
@@ -278,6 +341,12 @@ void Desarrollo::registrarAutor()
     int cantAutores = 0;
     std::cout << "Seleccione la cantidad de autores a ingresar al sistema: \n";
     std::cin >> cantAutores;
+    
+    // Leer el último índice del archivo o usar el tamaño actual del vector
+    int autorInicial = leerUltimoIndice("registro_autores.txt", "Autor");
+    if (autorInicial == 0) {
+        autorInicial = autores.size();
+    }
 
     for (int i = 0; i < cantAutores; i++)
     {
@@ -298,6 +367,16 @@ void Desarrollo::registrarAutor()
 
         Autor autor(dni, nombre, medio);
         autores.push_back(autor);
+
+        //Registro datos del autor en un archivo
+        // Formatear los datos del autor como una cadena
+        
+        std::string datosAutor = "Autor " + std::to_string(autorInicial + i + 1) + ":\n" +
+                                 "DNI: " + std::to_string(dni) + "\n" +
+                                 "Nombre: " + nombre + "\n" +
+                                 "Medio: " + medio + "\n";
+        registrarDatos("registro_autores.txt", datosAutor);
+
     }
 }
 
@@ -315,6 +394,13 @@ void Desarrollo::registrarArticulo()
     std::cout << "Seleccione la cantidad de artículos a ingresar al sistema: \n";
     std::cin >> cantArticulos;
 
+
+    // Leer el último índice del archivo o usar el tamaño actual del vector
+    int articuloInicial = leerUltimoIndice("registro_articulos.txt", "Artículo");
+    if (articuloInicial == 0) {
+        articuloInicial = publicacion.getArticulos().size();
+    }
+
     for (int i = 0; i < cantArticulos; i++)
     {
 
@@ -328,7 +414,7 @@ void Desarrollo::registrarArticulo()
         std::cout << "Ingrese los datos del " << i + 1 << " artículo : \n";
 
         std::cout << "Título: ";
-        std::cin.ignore(); // Clear newline from the buffer
+        std::cin.ignore(); // Limpiar buffer
         std::getline(std::cin, titulo);
 
         std::cout << "Detalle: ";
@@ -379,6 +465,20 @@ void Desarrollo::registrarArticulo()
          */
         Articulo articulo(titulo, detalle, dia, mes, anio, autorSeleccionado);
         publicacion.agregarArticulo(articulo);
+
+
+        // Registro datos del articulo en un .txt
+        // Formatear los datos del artículo como una cadena
+        
+        std::string datosArticulo = "Artículo " + std::to_string(articuloInicial + i + 1) + ":\n" +
+                                    "Título: " + titulo + "\n" +
+                                    "Detalle: " + detalle + "\n" +
+                                    "Fecha: " + std::to_string(dia) + "/" + std::to_string(mes) + "/" + std::to_string(anio) + "\n" +
+                                    "Autor: " + autorSeleccionado.getNombre() + " (DNI: " + std::to_string(autorSeleccionado.getDni()) + ")\n";
+
+        // Registrar los datos en un archivo
+        registrarDatos("registro_articulos.txt", datosArticulo);
+
     }
 }
 
@@ -430,7 +530,7 @@ void Desarrollo::mostrarArticulos() const
     }
 }
 
-// Función para pedir la fecha, para establecer las noticias del anio, y del ultimo mes
+// Función para pedir la fecha, para establecer las noticias del año, y del ultimo mes
 void Desarrollo::pedirFecha(int &mes, int &anio)
 {
     std::cout << "Ingrese el mes actual (especificar entre 1 - 12): ";
