@@ -8,23 +8,24 @@ void Publicacion::agregarArticulo(const Articulo &articulo)
 
 bool Publicacion::comentarArticulo(const std::string &titulo, const Comentario &comentario, const Usuario &usuario)
 {
-    for (auto& a : articulos)
+    for (size_t i = 0; i < articulos.size(); ++i)
     {
-        if (a.getTitulo() == titulo)
+        Articulo &articulo = articulos[i];
+        if (articulo.getTitulo() == titulo)
         {
-            a.agregarComentario(comentario);
+            articulo.agregarComentario(comentario);
             return true; // Comentario agregado correctamente
         }
     }
     return false; // Artículo no encontrado
 }
 
-// Implementación del método para mostrar todos los artículos disponibles
 void Publicacion::mostrarArticulos() const
 {
     std::cout << "Artículos disponibles:\n";
-    for (const auto& articulo : articulos)
+    for (size_t i = 0; i < articulos.size(); ++i)
     {
+        const Articulo &articulo = articulos[i];
         std::cout << "- Título: " << articulo.getTitulo() << "\n";
         std::cout << "  Autor: " << articulo.getAutor().getNombre() << "\n";
         std::cout << "  Fecha de publicación: " << articulo.getDia() << "/" << articulo.getMes() << "/" << articulo.getAnio() << "\n";

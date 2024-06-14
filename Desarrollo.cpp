@@ -196,7 +196,7 @@ void Desarrollo::menuRegistrosConsultas()
 
      while (true) { //bucle hasta que no se cumple el if
             std::cin >> opcionx;
-            if (std::cin.fail() || opcionx < 1 || opcionx > 4) {
+            if (std::cin.fail() || opcionx < 1 || opcionx > 7) {
                 std::cin.clear(); // Limpiar el estado de error
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada no válida
                 std::cout << "Opción no válida. Por favor ingrese un número entre 1 y 4: ";
@@ -646,7 +646,7 @@ void Desarrollo::registrarArticulo()
          */
         Articulo articulo(titulo, detalle, dia, mes, anio, autorSeleccionado);
         publicacion.agregarArticulo(articulo);
-
+        
 
         // Registro datos del articulo en un .txt
         // Formatear los datos del artículo como una cadena
@@ -704,6 +704,11 @@ void Desarrollo::mostrarArticulos() const
 {
     std::cout << "Los artículos disponibles son:\n";
     // Despliegue de listas de articulos generados
+       /*
+     * Referencia al vector articulos, de objeto Articulo, el cual con: publicacion.getArticulos()
+     * Devuelve la lista de articulos
+     * Se emplea const para asegurar que no se modifiquen los datos
+     */
     const std::vector<Articulo> &articulos = publicacion.getArticulos();
     for (size_t i = 0; i < articulos.size(); ++i)
     {
