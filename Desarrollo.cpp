@@ -57,7 +57,18 @@ void Desarrollo::menuInicial()
         std::cout << "2. Autor\n";
         std::cout << "3. Registros y consultas \n";
         std::cout << "4. Salir del sistema\n";
-        std::cin >> opcion0;
+
+         while (true) { //bucle hasta que no se cumple el if
+            std::cin >> opcion0;
+            if (std::cin.fail() || opcion0 < 1 || opcion0 > 4) {
+                std::cin.clear(); // Limpiar el estado de error
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada no válida
+                std::cout << "Opción no válida. Por favor ingrese un número entre 1 y 4: ";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar cualquier entrada adicional
+                break;
+            }
+        }
 
         switch (opcion0)
         {
@@ -92,8 +103,17 @@ void Desarrollo::menuLectorInicial()
         std::cout << "2. Leer artículo\n";
         std::cout << "3. Comentar artículo\n";
         std::cout << "4. Salir\n";
-        std::cin >> opcion1;
-
+        while (true) { //bucle hasta que no se cumple el if
+            std::cin >> opcion1;
+            if (std::cin.fail() || opcion1 < 1 || opcion1 > 4) {
+                std::cin.clear(); // Limpiar el estado de error
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada no válida
+                std::cout << "Opción no válida. Por favor ingrese un número entre 1 y 4: ";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar cualquier entrada adicional
+                break;
+            }
+        }
         switch (opcion1)
         {
             case 1:
@@ -126,7 +146,17 @@ void Desarrollo::menuAutorInicial()
         std::cout << "1. Carga de autor\n";
         std::cout << "2. Registrar artículo\n";
         std::cout << "3. Salir\n";
-        std::cin >> opcion1;
+         while (true) { //bucle hasta que no se cumple el if
+            std::cin >> opcion1;
+            if (std::cin.fail() || opcion1 < 1 || opcion1 > 3) {
+                std::cin.clear(); // Limpiar el estado de error
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada no válida
+                std::cout << "Opción no válida. Por favor ingrese un número entre 1 y 4: ";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar cualquier entrada adicional
+                break;
+            }
+        }
 
         switch (opcion1)
         {
@@ -164,7 +194,17 @@ void Desarrollo::menuRegistrosConsultas()
     std::cout << "6. Listado de noticias publicadas en el ultimo mes\n";
     std::cout << "Presione '7' para retornar al menu anterior\n";
 
-    std::cin >> opcionx;
+     while (true) { //bucle hasta que no se cumple el if
+            std::cin >> opcionx;
+            if (std::cin.fail() || opcionx < 1 || opcionx > 4) {
+                std::cin.clear(); // Limpiar el estado de error
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada no válida
+                std::cout << "Opción no válida. Por favor ingrese un número entre 1 y 4: ";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar cualquier entrada adicional
+                break;
+            }
+        }
 
     switch (opcionx)
     {
@@ -181,9 +221,35 @@ void Desarrollo::menuRegistrosConsultas()
             consultarComentariosPorUsuario();
             break;
         case 5:
+            while(true){
+                std::cout<<"Ingrese el año a consultar\n";
+                std::cin>> anio;
+                if(std::cin.fail()|| anio <1900 || anio > 2100)
+                {
+                std::cin.clear(); // Limpiar el estado de error
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada no válida
+                std::cout << "Año no valido. Por favor ingrese un año entre 1900 y 2100: \n";
+                } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar cualquier entrada adicional
+                break;
+                        }
+        }
             listarNoticiasAnio(anio);
             break;
         case 6:
+            while(true){
+                std::cout<<"Ingrese el mes a consultar\n";
+                std::cin>> mes;
+                if(std::cin.fail()|| mes <1 || mes > 12)
+                {
+                std::cin.clear(); // Limpiar el estado de error
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada no válida
+                std::cout << "Año no valido. Por favor ingrese un mes entre 1 y : \n";
+                } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar cualquier entrada adicional
+                break;
+                        }
+        }
             listarNoticiasUltimoMes(mes);
             break;
         case 7:
@@ -192,7 +258,7 @@ void Desarrollo::menuRegistrosConsultas()
         default:
             std::cout << "\nOpción no válida. Intente nuevamente.\n";
     }
-}
+};
 
 /*
  * 2. DESARROLLO DE FUNCIONES DEL MENU USUARIO
@@ -203,7 +269,17 @@ void Desarrollo::registrarUsuario()
 {
     int cantUsuarios = 0;
     std::cout << "Seleccione la cantidad de usuarios a ingresar al sistema: \n";
-    std::cin >> cantUsuarios;
+    while (true) {
+        std::cin >> cantUsuarios;
+        if (std::cin.fail() || cantUsuarios <= 0) {
+            std::cin.clear(); // Limpiar el estado de error
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada no válida
+            std::cout << "Entrada no válida. Por favor ingrese un número entero positivo: ";
+        } else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar cualquier entrada adicional
+            break;
+        }
+    }
 
     // Leer el último índice del archivo o usar el tamaño actual del vector
     int usuarioInicial = leerUltimoIndice("registro_usuarios.txt", "Usuario");
@@ -218,7 +294,18 @@ void Desarrollo::registrarUsuario()
         std::cout << "Ingrese los datos del usuario " << i + 1 << ": \n";
 
         std::cout << "DNI: ";
-        std::cin >> dni;
+         while (true) {
+            
+            std::cin >> dni;
+            if (std::cin.fail() || dni <= 0) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Entrada no válida. Por favor ingrese un número entero positivo: ";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                break;
+            }
+        }
 
         /*
          * En aquellas entradas de texto, las cuales puedan contener espacios, se emplea 'getline'
@@ -231,7 +318,17 @@ void Desarrollo::registrarUsuario()
         std::getline(std::cin, nombre);
 
         std::cout << "Edad: ";
-        std::cin >> edad;
+        while (true) {
+            std::cin >> edad;
+            if (std::cin.fail() || edad <= 0 || edad> 100) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Entrada no válida. Por favor ingrese un número entero positivo: ";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                break;
+            }
+        }
 
         /*
          * Se crea un objeto de la clase Usuario usando los datos ingresados (dni, nombre, y edad).
@@ -272,13 +369,17 @@ void Desarrollo::comentarArticulo() {
 
     // La seleccion de usuario que comenta se almacena en 'seleccionDeUsuario'
     int seleccionDeUsuario;
-    std::cin >> seleccionDeUsuario;
-
-    if (seleccionDeUsuario < 1 || seleccionDeUsuario > usuarios.size()) {
-        std::cout << "Índice de usuario no válido. Intente nuevamente.\n";
-        return;
+    while (true) {
+        std::cin >> seleccionDeUsuario;
+        if (std::cin.fail() || seleccionDeUsuario < 1 || seleccionDeUsuario > usuarios.size()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Índice de usuario no válido. Por favor ingrese un número entre 1 y " << usuarios.size() << ": ";
+        } else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
     }
-
     /*
      * Selecciona un usuario de la lista de usuarios registrados basándose en el
      * Indice proporcionado por el usuario y crea una copia de dicho usuario.
@@ -291,7 +392,17 @@ void Desarrollo::comentarArticulo() {
     mostrarArticulos();
 
     int indiceDeArticulo;
-    std::cin >> indiceDeArticulo;
+    while (true) {
+        std::cin >> indiceDeArticulo;
+        if (std::cin.fail() || indiceDeArticulo < 1 || indiceDeArticulo > publicacion.getArticulos().size()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Selección de artículo inválida. Por favor ingrese un número entre 1 y " << publicacion.getArticulos().size() << ": ";
+        } else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+    }
 
     const std::vector<Articulo> &articulos = publicacion.getArticulos();
 
@@ -303,7 +414,17 @@ void Desarrollo::comentarArticulo() {
     const Articulo &articuloSeleccionado = articulos[indiceDeArticulo - 1];
 
     std::cout << "Especifique el numero del comentario a realizar: ";
-    std::cin >> numeroDeComentario;
+     while (true) {
+        std::cin >> numeroDeComentario;
+        if (std::cin.fail() || numeroDeComentario <= 0) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Número de comentario inválido. Por favor ingrese un número entero positivo: ";
+        } else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+    }
     std::cout << "Comente a continuacion: ";
     std::cin.ignore();
     std::getline(std::cin, textoComentario);
@@ -340,8 +461,17 @@ void Desarrollo::registrarAutor()
 {
     int cantAutores = 0;
     std::cout << "Seleccione la cantidad de autores a ingresar al sistema: \n";
-    std::cin >> cantAutores;
-    
+    while (true) {  //bucle infinito hasta que el if no se cumpla
+        std::cin >> cantAutores;
+        if (std::cin.fail() || cantAutores <= 0) {
+            std::cin.clear(); // limpiar el estado de error
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // descartar la entrada no válida
+            std::cout << "Entrada no válida. Por favor ingrese un número entero positivo: ";
+        } else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // descartar cualquier entrada adicional
+            break;
+        }
+    }
     // Leer el último índice del archivo o usar el tamaño actual del vector
     int autorInicial = leerUltimoIndice("registro_autores.txt", "Autor");
     if (autorInicial == 0) {
@@ -356,8 +486,19 @@ void Desarrollo::registrarAutor()
         std::cout << "Ingrese los datos del " << i + 1 << " autor: \n";
 
         std::cout << "DNI: ";
-        std::cin >> dni;
-
+        
+        while (true) { //bucle que se rompe cuando no se cumpla el 
+            std::cout << "DNI: ";
+            std::cin >> dni;
+            if (std::cin.fail() || dni <= 0) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  //ignora cualquier entrada no valida
+                std::cout << "Entrada no válida. Por favor ingrese un número entero para el DNI: ";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //ignora cualquier entrada no valida
+                break;
+            }
+        }
         std::cout << "Nombre: ";
         std::cin.ignore();
         std::getline(std::cin, nombre);
@@ -392,7 +533,17 @@ void Desarrollo::registrarArticulo()
 
     int cantArticulos = 0;
     std::cout << "Seleccione la cantidad de artículos a ingresar al sistema: \n";
-    std::cin >> cantArticulos;
+   while (true) { 
+        std::cin >> cantArticulos;
+        if (std::cin.fail() || cantArticulos <= 0 || cantArticulos >12) {
+            std::cin.clear(); // limpiar el estado de error
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // descartar la entrada no válida
+            std::cout << "Entrada no válida. Por favor ingrese un número entero positivo menor a 12: ";
+        } else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // descartar cualquier entrada adicional
+            break;
+        }
+    }
 
 
     // Leer el último índice del archivo o usar el tamaño actual del vector
@@ -420,14 +571,44 @@ void Desarrollo::registrarArticulo()
         std::cout << "Detalle: ";
         std::getline(std::cin, detalle);
 
-        std::cout << "Día: ";
-        std::cin >> dia;
+        while (true) {
+            std::cout << "Día: ";
+            std::cin >> dia;
+            if (std::cin.fail() || dia < 1 || dia > 31) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Entrada no válida. Por favor ingrese un día válido (1-31): ";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                break;
+            }
+        }
 
-        std::cout << "Mes: ";
-        std::cin >> mes;
+        while (true) {
+            std::cout << "Mes: ";
+            std::cin >> mes;
+            if (std::cin.fail() || mes < 1 || mes > 12) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Entrada no válida. Por favor ingrese un mes válido (1-12): ";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                break;
+            }
+        }
 
-        std::cout << "Año: ";
-        std::cin >> anio;
+        while (true) {
+            std::cout << "Año: ";
+            std::cin >> anio;
+            if (std::cin.fail() || anio < 1900 || anio > 2100) { 
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Entrada no válida. Por favor ingrese un año válido (1900-2100): ";
+            } else {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                break;
+            }
+        }
 
         /*
          * Se solicita a que autor asignar el articulo creado, y 'j' recorre el indice de autores cargados, en un bucle
